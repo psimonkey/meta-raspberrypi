@@ -8,7 +8,7 @@ PR = "r1"
 
 # Bump MACHINE_KERNEL_PR in the machine config if you update the kernel.
 # This is on the rpi-patches branch
-SRCREV = "0ec4154d64ebba48ca2446cde60a90546311defc"
+SRCREV = "e3a21fc997669aae744537bf69e123f88a5e69e2"
 
 SRC_URI = "git://github.com/raspberrypi/linux.git;protocol=git;branch=rpi-patches \
 "          

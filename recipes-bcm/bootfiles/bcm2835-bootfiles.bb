@@ -4,7 +4,7 @@ LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://LICENCE.broadcom;md5=e86e693d19572ee64cc8b17fb062faa9"
 
 # This is on the master branch
-SRCREV = "56cd7ffb3f7244017c8eb3b492ea37592c678506"
+SRCREV = "9308c7ed387e5422883753f7fb71a75506abd1f8"
 
 SRC_URI = " \
         git://github.com/raspberrypi/firmware.git;protocol=git;branch=master  \    
@@ -23,7 +23,7 @@ do_deploy() {
 	done
 	for i in *.bin ; do
 		cp $i ${DEPLOY_DIR_IMAGE}/bcm2835-bootfiles
-	done	
+	done
 }
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"

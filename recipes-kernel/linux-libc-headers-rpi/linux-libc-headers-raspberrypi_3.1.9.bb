@@ -6,6 +6,6 @@ PROVIDES = "linux-libc-headers"
 RPROVIDES_${PN}-dev = "linux-libc-headers-dev"
 RPROVIDES_${PN}-dbg = "linux-libc-headers-dbg"
 
-SRCREV = "4c9c54713c4b26c920f0fd73f245d415fe8e7ca0"
+SRCREV = "e3a21fc997669aae744537bf69e123f88a5e69e2"
 SRC_URI = "git://github.com/raspberrypi/linux.git;protocol=git"
 S = "${WORKDIR}/git"

@@ -10,9 +10,9 @@ except:
    raw_kernel = "./zImage"
 
 try:
-   output_img = sys.argv[2]
+   output_dir = sys.argv[2]
 except:
-   output_img = "./kernel.img"
+   output_dir = "./kernel.img"
 
 try:
    supfile_loc = sys.argv[3]
@@ -38,14 +38,16 @@ def load_to_mem(name, addr):
 
    f.close()
 
-load_to_mem(""+supfile_loc+"bcm2835-boot-uncompressed.txt", 0x00000000)
-load_to_mem(""+supfile_loc+"bcm2835-args-uncompressed.txt", 0x00000100)
+load_to_mem("%s/bcm2835-boot-uncompressed.txt" % supfile_loc, 0x00000000)
+load_to_mem("%s/bcm2835-args-uncompressed.txt" % supfile_loc, 0x00000100)
 
-f = open(""+supfile_loc+"bcm2835-kernel-first32k.bin", "wb")
-
+f = open("%s/bcm2835-kernel-first32k.bin" % supfile_loc, "wb")
 for m in mem:
    f.write(chr(m))
-
 f.close()
 
-os.system("cat "+supfile_loc+"bcm2835-kernel-first32k.bin "+raw_kernel+" > "+output_img+"")
+os.system("cat %s/bcm2835-kernel-first32k.bin %s > %s/kernel.img" %(supfile_loc, raw_kernel, output_dir))
+
+f = open("%s/cmdline.txt" % output_dir, "w")
+f.write("root=/dev/mmcblk0p2 rootfstype=ext4 rootwait")
+f.close()

@@ -17,7 +17,7 @@ IMAGE_KERNEL     ?= "bcm2835-kernel-image"
 #
 
 # Default to 1.4GiB images
-SDCARD_SIZE ?= "100"
+SDCARD_SIZE ?= "1400"
 
 # Addional space for boot partition
 BOOT_SPACE ?= "50"
@@ -39,7 +39,7 @@ IMAGE_CMD_rpi-sdimg () {
     # Create partition table
     parted -s ${SDCARD} mklabel msdos
     parted -s ${SDCARD} mkpart primary fat32 1MB ${BOOT_SPACE}MiB
-    parted -s ${SDCARD} mkpart primary ext3 ${BOOT_SPACE}MiB 100%
+    parted -s ${SDCARD} mkpart primary ext4 ${BOOT_SPACE}MiB 100%
     parted -s ${SDCARD} partprobe
     sync
 

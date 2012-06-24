@@ -13,7 +13,7 @@ addtask deploy before do_package after do_install
 
 do_deploy() {
 	install -d ${DEPLOY_DIR_IMAGE}/bcm2835-bootfiles
-	bcm2835-mkimage.py ${DEPLOY_DIR_IMAGE}/zImage-${MACHINE}.bin ${DEPLOY_DIR_IMAGE}/bcm2835-bootfiles/kernel.img ${STAGING_BINDIR_NATIVE}/
+	bcm2835-mkimage.py ${DEPLOY_DIR_IMAGE}/zImage-${MACHINE}.bin ${DEPLOY_DIR_IMAGE}/bcm2835-bootfiles ${STAGING_BINDIR_NATIVE}
 }
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
