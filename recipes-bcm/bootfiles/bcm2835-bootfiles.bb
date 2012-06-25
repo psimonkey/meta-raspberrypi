@@ -3,11 +3,10 @@ LICENSE = "Proprietary"
 
 LIC_FILES_CHKSUM = "file://LICENCE.broadcom;md5=e86e693d19572ee64cc8b17fb062faa9"
 
-# This is on the master branch
-SRCREV = "9308c7ed387e5422883753f7fb71a75506abd1f8"
+include ../common/firmware.inc
 
 SRC_URI = " \
-        git://github.com/raspberrypi/firmware.git;protocol=git;branch=master  \    
+        git://github.com/raspberrypi/firmware.git;protocol=git;branch=master  \
 "
 
 S = "${WORKDIR}/git/boot"
