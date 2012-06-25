@@ -1,11 +1,15 @@
 # Ensure required utilities are present
-IMAGE_DEPENDS_rpi-sdimg = "genext2fs-native dosfstools-native e2fsprogs-native bcm2835-bootfiles bcm2835-kernel-image"
+IMAGE_DEPENDS_rpi-sdimg = "parted-native \
+                           mtools-native \
+                           dosfstools-native \
+                           bcm2835-bootfiles \
+                           bcm2835-kernel-image"
 
 # Register this as an available type of image.
 IMAGE_TYPES_append = " rpi-sdimg"
 
 # Default to 4GiB images
-SDIMG_SIZE ?= "444" 
+SDIMG_SIZE ?= "144" 
 
 # FS type for rootfs
 ROOTFSTYPE ?= "ext4"
@@ -29,7 +33,7 @@ IMAGE_CMD_rpi-sdimg () {
 	dd if=/dev/zero of=${SDIMG} bs=1024 count=1024 conv=notrunc
 	SIZE=$(ls -l ${SDIMG} | awk '{print $5}')
 	CYLINDERS=$(expr $SIZE / 255 / 63 / 512 )
-	{
+	                                                                                                                                                                                                                        {
 	echo ,9,0x0C,*
 	echo ,,,-
 	} | /sbin/sfdisk -D -H 255 -S 63 -C ${CYLINDERS} ${SDIMG}
