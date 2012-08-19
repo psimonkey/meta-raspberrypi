@@ -6,9 +6,6 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 inherit kernel siteinfo
 
-# Try to build & install perf
-require recipes-kernel/linux/linux-tools.inc
-
 RPSRC = "http://www.rpsys.net/openzaurus/patches/archive"
 
 # Enable OABI compat for people stuck with obsolete userspace
@@ -220,6 +217,12 @@ do_configure_prepend() {
                 echo "CONFIG_CMDLINE=\"${CMDLINE_NFSROOT_USB}\"" >> ${S}/.config
         fi
 		yes '' | oe_runmake oldconfig
+
+		#
+		# Activate CONFIG_LEGACY_PTYS
+		#
+		sed -e '/CONFIG_LEGACY_PTYS/d' -i ${S}/.config
+		echo "CONFIG_LEGACY_PTYS=y" >> ${S}/.config
 }
 
 do_configure_append() {
