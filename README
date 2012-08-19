@@ -64,25 +64,4 @@ How to use it:
 7. Boot your RPI.
 
 Layer maintainer: John Willis <John.Willis at distant-earth.com>
-<<<<<<< HEAD
-
-
- Yocto BSP Layer - RaspberryPi
--------------------------------
-
-This layer depends on:
-
-URI: git://git.yoctoproject.org/poky
-branch: master
-revision: HEAD
-
-How to use it:
-
-1. source poky/oe-init-build-env rpi-build
-2. Add meta-raspberrypi in bblayers.conf
-3  Set MACHINE to raspberrypi in local.conf
-4. Modify distro to DISTRO ?= "poky-raspberrypi" in local.conf
-5. bitbake rpi-hwup-image
-=======
                   Andrei Gherzan <andrei at gherzan.ro>
->>>>>>> dwillis/master
